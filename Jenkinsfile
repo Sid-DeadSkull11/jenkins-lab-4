@@ -8,13 +8,13 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scmGit(branches: [[name: '**']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Sid-DeadSkull11/jenkins-lab-4.git']])
+                git branch: 'main', url: 'https://github.com/Sid-DeadSkull11/jenkins-lab-4.git'
             }
         }
 
         stage('Build') {
             steps {
-                bat 'python -m py_compile app.py'
+                bat 'py -m py_compile app.py'
                 echo 'Build successful: app.py compiled with no syntax errors'
             }
         }
@@ -26,7 +26,7 @@ pipeline {
 
             steps {
                 echo 'Running extra check: verifying greet() output format...'
-                bat 'python -c "from app import greet; print(greet(\'Student\'))"'
+                bat 'py -c "from app import greet; print(greet(\'Student\'))"'
             }
         }
     }
