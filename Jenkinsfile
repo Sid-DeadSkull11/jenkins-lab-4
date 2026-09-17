@@ -14,7 +14,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'py -m py_compile app.py'
+                bat '"C:\\Users\\siddh\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe" -m py_compile app.py'
                 echo 'Build successful: app.py compiled with no syntax errors'
             }
         }
@@ -26,7 +26,7 @@ pipeline {
 
             steps {
                 echo 'Running extra check: verifying greet() output format...'
-                bat 'py -c "from app import greet; print(greet(\'Student\'))"'
+                bat '"C:\\Users\\siddh\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe" -c "from app import greet; print(greet(\'Student\'))"'
             }
         }
     }
